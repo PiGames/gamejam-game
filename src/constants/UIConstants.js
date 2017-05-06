@@ -1,4 +1,4 @@
-export const BACKGROUND_COLOR = '#f06292';
+export const BACKGROUND_COLOR = '#3a3537';
 
 export const BUTTON_PADDING = 20;
 
