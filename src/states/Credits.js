@@ -1,4 +1,4 @@
-import { CREDITS_FONT, CREDITS_TITLE_FONT, BUTTON_PADDING, CREDITS_FONT_SOUNDS } from '../constants/UIconstants';
+import { CREDITS_FONT, CREDITS_TITLE_FONT, BUTTON_PADDING, CREDITS_FONT_SOUNDS } from '../constants/UIConstants';
 import { playAudio } from '../utils/AudioManager';
 
 import Text from '../UI/Text';
