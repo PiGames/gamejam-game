@@ -1,10 +1,4 @@
-const NINJA_HIT_AREA_WIDTH = 650;
-
-const LEFT = -1;
-const CENTER = 0;
-const RIGHT = 1;
-
-const VELOCITY = 500;
+import { NINJA_HIT_AREA_WIDTH, LEFT, RIGHT, CENTER, VELOCITY } from '../constants/NinjaConstants';
 
 export default class Ninja extends Phaser.Sprite{
   constructor( game, x, y, key ){
