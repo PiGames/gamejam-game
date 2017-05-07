@@ -18,7 +18,7 @@ export default class Game extends Phaser.State {
       }
     } );
 
-    this.ObstacleSpawner = new ObstacleSpawner();
+    this.ObstacleSpawner = new ObstacleSpawner( this.game );
     this.initNinja();
   }
   initNinja(){
@@ -26,5 +26,7 @@ export default class Game extends Phaser.State {
   }
   update() {
     this.gameUI.updateUI();
+
+    this.ObstacleSpawner.updateObstacles();
   }
 }
