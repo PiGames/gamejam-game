@@ -2,7 +2,7 @@ import { NINJA_HIT_AREA_WIDTH, LEFT, RIGHT, CENTER, VELOCITY } from '../constant
 
 export default class Ninja extends Phaser.Sprite{
   constructor( game, x, y, key ){
-    super( game, x, y, key );
+    super( game, x, y, key, 1 );
 
     this.game.physics.enable( this, Phaser.Physics.ARCADE );
     this.game.world.add(this);
