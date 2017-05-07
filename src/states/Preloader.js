@@ -7,7 +7,7 @@ const resources = {
 		[ 'overlay', 'img/ui/overlay.png' ],
 
     [ 'nutrition-bar-background', 'img/ui/nutrition-bar-background.png' ],
-    ['ninja', 'img/assets/ninja.jpg'],
+    ['ninja', 'img/assets/ninja.png'],
   ],
   'spritesheet': [
 		[ 'button-start', 'img/ui/button-start.png', 160, 160 ],
