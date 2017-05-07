@@ -13,6 +13,12 @@ export default class ObstacleSpawner {
     this.obstacles.add( new Obstacle( this.game, 960, 0 ) );
   }
 
+  setOnCollisionHandler( callback ) {
+    this.obstacles.forEach( ( obstacle ) => {
+      obstacle.onCollisionZoneEnter.add( callback );
+    } );
+  }
+
   updateObstacles() {
     this.obstacles.forEach( ( obstacle ) => {
       obstacle.updateObstacle();
