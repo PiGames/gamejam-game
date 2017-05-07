@@ -12,10 +12,9 @@ export default class Game extends Phaser.State {
         this.game.time.events.pause();
       }
     } );
-
-    this.createGame();
   }
-  createGame() {
 
+  update() {
+    this.gameUI.updateUI();
   }
 }

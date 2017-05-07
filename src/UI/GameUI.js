@@ -136,7 +136,6 @@ export default class GameUI {
   }
 
   statePlaying() {
-    this.state.startHeads.call( this.state );
     const tween = this.game.add.tween( this.screenPausedGroup );
     tween.to( { alpha: 0 }, 100, Phaser.Easing.Linear.None, true );
     tween.onComplete.add( () => {
@@ -148,7 +147,6 @@ export default class GameUI {
 
   statePaused() {
     this.screenPausedGroup.visible = true;
-    this.state.stopHeads.call( this.state );
     const tween = this.game.add.tween( this.screenPausedGroup );
     tween.to( { alpha: 1 }, 100, Phaser.Easing.Linear.None, true );
   }
