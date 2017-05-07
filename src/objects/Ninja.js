@@ -7,7 +7,6 @@ export default class Ninja extends Phaser.Sprite{
     this.game.physics.enable( this, Phaser.Physics.ARCADE );
     this.game.world.add(this);
 
-    this.body.bounce.y = 0.4;
     this.body.gravity.y = 400;
     this.body.allowGravity = false;
 
@@ -26,7 +25,7 @@ export default class Ninja extends Phaser.Sprite{
     if( this.body.allowGravity === true && this.position.y > this.originY && this.body.velocity.y >= 0 ){
       this.body.allowGravity = false;
       this.position.y = this.originY;
-      console.log('stop jump');
+      this.body.velocity.y = 0;
     }
     if ( this.game.input.activePointer.isDown ){
        this.jump();
@@ -47,13 +46,12 @@ export default class Ninja extends Phaser.Sprite{
     }
   }
   handleDeath(){
-    this.onDeath.dispatch();
+    //this.onDeath.dispatch();
   }
   jump(){
     if( this.body.allowGravity === false ){
     this.body.velocity.y = -300;
     this.body.allowGravity = true;
-    console.log('jump');
     }
   }
 }
