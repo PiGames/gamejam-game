@@ -58,11 +58,14 @@ export default class Game extends Phaser.State {
       return;
     }
 
+    this.ObstacleSpawner.pauseObstacles();
+
     this.game.time.events.pause();
     this.gameUI.showSlowDownText();
 
     this.ninja.fallOff( () => {
       this.gameUI.hideSlowDownText();
+      this.ObstacleSpawner.resumeObstacles();
       this.game.time.events.resume();
       CURRENT_REVOLUTION_SPEED = TARGET_REVOLUTION_SPEED;
     } );

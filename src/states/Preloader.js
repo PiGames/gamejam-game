@@ -12,6 +12,7 @@ const resources = {
     [ 'katana', 'img/assets/katana.png' ],
   ],
   'spritesheet': [
+    [ 'trees', 'img/assets/trees.png', 766, 1129 ],
     [ 'ninja', 'img/assets/ninja2.png', 721, 1340 ],
 		[ 'button-start', 'img/ui/button-start.png', 160, 160 ],
 		[ 'button-continue', 'img/ui/button-start.png', 160, 160 ],

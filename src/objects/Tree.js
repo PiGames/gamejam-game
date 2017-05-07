@@ -1,8 +1,8 @@
 import { NINJA_COLLISION_Y } from '../constants/NinjaConstants';
 
-export default class Obstacle extends Phaser.Sprite {
+export default class Tree extends Phaser.Sprite {
   constructor( game, x, y, velocity, initScale ) {
-    super( game, x, y, 'bush' );
+    super( game, x, y, 'trees', game.rnd.integerInRange( 2, 3 ) );
     this.initScale = initScale;
 
     this.sentSignal = false;
@@ -28,12 +28,13 @@ export default class Obstacle extends Phaser.Sprite {
   }
 
   update() {
-    this.scale.setTo( ( ( 1 - this.initScale ) * ( this.body.y / this.game.world.height ) + this.initScale ) * 1 );
+    this.scale.setTo( ( ( 1 - this.initScale ) * ( this.body.y / this.game.world.height ) + this.initScale ) * 0.8 * 2 );
 
     if ( !this.sentSignal && this.body.y >= NINJA_COLLISION_Y ) {
       this.sentSignal = true;
       this.onCollisionZoneEnter.dispatch( this );
       this.game.world.bringToTop( this );
+      this.destroy();
     }
   }
 }
