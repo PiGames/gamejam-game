@@ -13,7 +13,7 @@ export default class ObstacleSpawner {
 
     this.spawnObstacle();
 
-    this.game.time.events.loop( Phaser.Timer.SECOND * 2, this.spawnObstacle, this );
+    this.game.time.events.loop( Phaser.Timer.SECOND * 4, this.spawnObstacle, this );
   }
 
   spawnObstacle() {
