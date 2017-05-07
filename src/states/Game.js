@@ -1,4 +1,5 @@
 import GameUI from '../UI/GameUI';
+import Ninja from '../objects/Ninja';
 
 export default class Game extends Phaser.State {
   create() {
@@ -12,8 +13,12 @@ export default class Game extends Phaser.State {
         this.game.time.events.pause();
       }
     } );
-  }
 
+    this.initNinja();
+  }
+  initNinja(){
+    this.ninja = new Ninja( this.game, 500, 500, 'ninja' );
+  }
   update() {
     this.gameUI.updateUI();
   }
