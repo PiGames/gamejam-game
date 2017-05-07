@@ -1,7 +1,11 @@
 import GameUI from '../UI/GameUI';
 
+import ObstacleSpawner from "../objects/ObstacleSpawner";
+
 export default class Game extends Phaser.State {
   create() {
+    this.game.add.sprite( 0, 0, 'background' );
+
     this.gameUI = new GameUI( this );
 
     this.camera.resetFX();
@@ -12,6 +16,8 @@ export default class Game extends Phaser.State {
         this.game.time.events.pause();
       }
     } );
+
+    this.ObstacleSpawner = new ObstacleSpawner();
   }
 
   update() {
