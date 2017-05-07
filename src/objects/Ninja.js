@@ -8,6 +8,8 @@ export default class Ninja extends Phaser.Sprite{
     this.game.world.add(this);
 
     this.mouse = this.game.input.activePointer;
+
+    this.onDeath = new Phaser.Signal();
   }
   update(){
     this.body.velocity.x = this.getDirection() * VELOCITY;
@@ -20,5 +22,13 @@ export default class Ninja extends Phaser.Sprite{
     } else {
       return CENTER;
     }
+  }
+  checkForCollision( obstacle ){
+    if( Phaser.Rectangle.intersects( obstacle.getBounds(), this.getBounds() ) ){
+      this.handleDeath();
+    }
+  }
+  handleDeath(){
+    this.onDeath.dispatch();
   }
 }

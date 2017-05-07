@@ -19,10 +19,11 @@ export default class Game extends Phaser.State {
     } );
 
     this.ObstacleSpawner = new ObstacleSpawner( this.game );
-    this.initNinja();
-  }
-  initNinja(){
     this.ninja = new Ninja( this.game, 500, 500, 'ninja' );
+
+    this.ObstacleSpawner.setOnCollisionHandler( this.ninja.checkForCollision.bind( this.ninja ) );
+
+    this.ninja.onDeath.add( this.gameUI.stateGameover.bind( this.gameUI ) );
   }
   update() {
     this.gameUI.updateUI();

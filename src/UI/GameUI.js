@@ -164,7 +164,6 @@ export default class GameUI {
   stateGameover() {
     this.stateStatus = 'gameover';
     this.game.time.events.pause();
-    this.state.stopHeads.call( this.state );
     this.game.world.bringToTop( this.screenGameoverGroup );
     this.screenGameoverScore.setText( `You have survived for ${Math.floor( this.score )} seconds` );
 
