@@ -52,7 +52,6 @@ export default class Ninja extends Phaser.Sprite{
   }
   handleDeath(){
     console.log('umrzyj');
-    //this.onDeath.dispatch();
   }
   jump(){
     if( this.body.allowGravity === false ){
