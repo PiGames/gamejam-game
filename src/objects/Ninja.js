@@ -41,7 +41,7 @@ export default class Ninja extends Phaser.Sprite{
     }
   }
   checkForCollision( obstacle ){
-    if( Phaser.Rectangle.intersects( obstacle.getBounds(), this.getBounds() ) ){
+    if( Phaser.Rectangle.intersects( obstacle.getBounds(), this.getBounds() ) && this.body.allowGravity === false ){
       this.handleDeath();
     }
   }
