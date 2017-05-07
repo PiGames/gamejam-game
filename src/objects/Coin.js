@@ -1,8 +1,8 @@
 import { NINJA_COLLISION_Y } from '../constants/NinjaConstants';
 
-export default class Obstacle extends Phaser.Sprite {
+export default class Coin extends Phaser.Sprite {
   constructor( game, x, y, velocity, initScale ) {
-    super( game, x, y, 'bush' );
+    super( game, x, y, 'katana' );
     this.initScale = initScale;
 
     this.sentSignal = false;
@@ -34,6 +34,7 @@ export default class Obstacle extends Phaser.Sprite {
       this.sentSignal = true;
       this.onCollisionZoneEnter.dispatch( this );
       this.game.world.bringToTop( this );
+      this.destroy();
     }
   }
 }

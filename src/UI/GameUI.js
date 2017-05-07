@@ -23,8 +23,6 @@ export default class GameUI {
 
   initScore() {
     this.textScore = new Text( this.game, 30, this.game.world.height - 20, SCORE_TEMPLATE( this.score ), SCORE_FONT, [ 0, 1 ] );
-
-    this.game.time.events.loop( Phaser.Timer.SECOND * 1, this.handlePointsAddition, this );
   }
 
   initPauseScreen() {
@@ -124,6 +122,11 @@ export default class GameUI {
       }
     }
     }
+  }
+
+  handlePointsAddition() {
+    this.score++;
+    this.textScore.setText( SCORE_TEMPLATE( this.score ) );
   }
 
   handlePointsAddition() {

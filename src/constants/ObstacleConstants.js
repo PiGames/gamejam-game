@@ -2,8 +2,8 @@ export const HORIZON_Y = 254;
 export const SIDE_RAIL_CENTER = 850;
 export const SIDE_RAIL_SCALE = 0.1;
 export const CENTER_RAIL_SCALE = 0.1;
-export const OBSTACLE_VELOCITY_Y = 300;
-export const OBSTACLE_VELOCITY_X = 225;
+export const OBSTACLE_VELOCITY_Y = 350;
+export const OBSTACLE_VELOCITY_X = 240;
 
 export const LEFT_RAIL_POSITION_X = 543;
 export const SIDE_RAIL_WIDTH = 254;
