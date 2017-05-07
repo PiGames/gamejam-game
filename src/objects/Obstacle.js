@@ -28,11 +28,12 @@ export default class Obstacle extends Phaser.Sprite {
   }
 
   updateObstacle() {
-    this.scale.setTo( ( 1 - this.initScale ) * ( this.body.y / this.game.world.height ) + this.initScale );
+    this.scale.setTo( ( ( 1 - this.initScale ) * ( this.body.y / this.game.world.height ) + this.initScale ) * 0.8 );
 
     if ( !this.sentSignal && this.body.y >= NINJA_COLLISION_Y ) {
       this.sentSignal = true;
       this.onCollisionZoneEnter.dispatch( this );
+      this.game.world.bringToTop( this );
     }
   }
 }

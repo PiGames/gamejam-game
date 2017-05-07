@@ -30,12 +30,12 @@ export default class Game extends Phaser.State {
 
     this.ShurikenSpawner.throwShurken( 'player' );
 
-
     this.ObstacleSpawner = new ObstacleSpawner( this.game, this.ninja.checkForCollision.bind( this.ninja ) );
+    this.ObstacleSpawner.onObstacleSpawn.add( ()=> this.game.world.bringToTop(this.ninja) );
+    this.ObstacleSpawner.initSpawning();
 
     this.ninja.onDeath.add( this.gameUI.stateGameover.bind( this.gameUI ) );
-    
-    this.ObstacleSpawner.onObstacleSpawn.add( ()=>this.game.world.bringToTop(this.ninja));
+
   }
 
   update() {

@@ -1,22 +1,23 @@
-export const SIDE_RAIL_CENTER = 743;
-export const SIDE_RAIL_SCALE = 0.28;
-export const CENTER_RAIL_SCALE = 0.3;
+export const HORIZON_Y = 254;
+export const SIDE_RAIL_CENTER = 850;
+export const SIDE_RAIL_SCALE = 0.1;
+export const CENTER_RAIL_SCALE = 0.1;
 export const OBSTACLE_VELOCITY_Y = 300;
-export const OBSTACLE_VELOCITY_X = 120;
+export const OBSTACLE_VELOCITY_X = 225;
 
 export const RAIL_OPTIONS = ( gameWidth ) => { return [
   {
     x: SIDE_RAIL_CENTER,
-    y: 0,
+    y: HORIZON_Y,
     velocity: {
       y: OBSTACLE_VELOCITY_Y,
       x: -OBSTACLE_VELOCITY_X
     },
-    scale: CENTER_RAIL_SCALE
+    scale: SIDE_RAIL_SCALE
   },
   {
     x: gameWidth / 2,
-    y: 0,
+    y: HORIZON_Y,
     velocity: {
       y: OBSTACLE_VELOCITY_Y,
       x: 0
@@ -25,7 +26,7 @@ export const RAIL_OPTIONS = ( gameWidth ) => { return [
   },
   {
     x: gameWidth - SIDE_RAIL_CENTER,
-    y: 0,
+    y: HORIZON_Y,
     velocity: {
       y: OBSTACLE_VELOCITY_Y,
       x: OBSTACLE_VELOCITY_X
