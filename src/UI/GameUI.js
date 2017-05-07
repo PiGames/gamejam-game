@@ -18,6 +18,7 @@ export default class GameUI {
     this.initScore();
     this.initPauseScreen();
     this.initGameoverScreen();
+    this.initSlowDownText();
   }
 
   initScore() {
@@ -86,6 +87,18 @@ export default class GameUI {
     this.screenGameoverGroup.add( this.screenGameoverScore );
     this.screenGameoverGroup.alpha = 0;
     this.screenGameoverGroup.visible = false;
+  }
+
+  initSlowDownText(){
+    this.slowDownText = new Text( this.game, 'center', 100, 'SLOW DOWN!', GAMEOVER_TITLE_FONT );
+    this.slowDownText.alpha = 0;
+  }
+
+  showSlowDownText(){
+    this.game.add.tween( this.slowDownText ).to( { alpha: 1 }, 500, 'Linear', true );
+  }
+  hideSlowDownText(){
+    this.game.add.tween( this.slowDownText ).to( { alpha: 0 }, 500, 'Linear', true );
   }
 
   updateUI() {
