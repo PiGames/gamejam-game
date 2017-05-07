@@ -20,7 +20,9 @@ export default class Ninja extends Phaser.Sprite{
     this.originY = this.position.y;
   }
   update(){
-    this.body.velocity.x = this.getDirection() * VELOCITY;
+    const currentDirection = this.getDirection();
+    this.body.velocity.x = currentDirection * VELOCITY;
+    this.frame = currentDirection + 1;
 
     if( this.body.allowGravity === true && this.position.y > this.originY && this.body.velocity.y >= 0 ){
       this.body.allowGravity = false;
