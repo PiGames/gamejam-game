@@ -9,6 +9,7 @@ const resources = {
     [ 'nutrition-bar-background', 'img/ui/nutrition-bar-background.png' ],
     [ 'bush', 'img/assets/bush.png' ],
     [ 'jumping-ninja', 'img/assets/jumping-ninja.png' ],
+    [ 'katana', 'img/assets/katana.png' ],
   ],
   'spritesheet': [
     [ 'ninja', 'img/assets/ninja2.png', 721, 1340 ],

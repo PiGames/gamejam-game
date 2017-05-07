@@ -4,6 +4,6 @@ export default class JumpscareNinja extends Phaser.Sprite {
 
     this.anchor.setTo( 1, 0 );
 
-    this.game.world.add( this );
+    // this.game.world.add( this );
   }
 }
