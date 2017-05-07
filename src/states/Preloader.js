@@ -7,10 +7,11 @@ const resources = {
 		[ 'overlay', 'img/ui/overlay.png' ],
 
     [ 'nutrition-bar-background', 'img/ui/nutrition-bar-background.png' ],
-    [ 'ninja', 'img/assets/ninja.png' ],
     [ 'bush', 'img/assets/bush.png' ],
+    [ 'jumping-ninja', 'img/assets/jumping-ninja.png' ],
   ],
   'spritesheet': [
+    [ 'ninja', 'img/assets/ninja2.png', 721, 1340 ],
 		[ 'button-start', 'img/ui/button-start.png', 160, 160 ],
 		[ 'button-continue', 'img/ui/button-start.png', 160, 160 ],
 		[ 'button-mainmenu', 'img/ui/button-mainmenu.png', 160, 160 ],
