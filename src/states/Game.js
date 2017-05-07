@@ -1,6 +1,7 @@
 import GameUI from '../UI/GameUI';
 import Ninja from '../objects/Ninja';
 import JumpscareNinja from '../objects/JumpscareNinja';
+import ShurikenSpawner from '../objects/ShurikenSpawner';
 
 import { NINJA_COLLISION_Y } from '../constants/NinjaConstants';
 
@@ -24,6 +25,11 @@ export default class Game extends Phaser.State {
     this.ninja = new Ninja( this.game, 500, NINJA_COLLISION_Y + 450, 'ninja' );
 
     this.jumpscareNinja = new JumpscareNinja( this.game );
+
+    this.ShurikenSpawner = new ShurikenSpawner( this.game, this.ninja, this.jumpscareNinja );
+
+    this.ShurikenSpawner.throwShurken( 'player' );
+
 
     this.ObstacleSpawner = new ObstacleSpawner( this.game, this.ninja.checkForCollision.bind( this.ninja ) );
 
