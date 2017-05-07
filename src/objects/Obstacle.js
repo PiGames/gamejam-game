@@ -1,8 +1,9 @@
-const NINJA_COLLISION_Y = 680;
+import { NINJA_COLLISION_Y } from '../constants/NinjaConstants';
 
 export default class Obstacle extends Phaser.Sprite {
-  constructor( game, x, y ) {
+  constructor( game, x, y, velocity, initScale ) {
     super( game, x, y, 'bush' );
+    this.initScale = initScale;
 
     this.sentSignal = false;
     this.onCollisionZoneEnter = new Phaser.Signal();
@@ -12,9 +13,10 @@ export default class Obstacle extends Phaser.Sprite {
 
     this.anchor.setTo( 0.5, 0 );
 
-    this.scale.setTo( 0.3 );
+    this.scale.setTo( this.initScale );
 
-    this.body.velocity.y = 300;
+    this.body.velocity.y = velocity.y;
+    this.body.velocity.x = velocity.x;
 
     this.checkWorldBounds = true;
 
@@ -26,7 +28,7 @@ export default class Obstacle extends Phaser.Sprite {
   }
 
   updateObstacle() {
-    this.scale.setTo( 0.7 * ( this.body.y / this.game.world.height ) + 0.3 )
+    this.scale.setTo( ( 1 - this.initScale ) * ( this.body.y / this.game.world.height ) + this.initScale );
 
 
     if ( !this.sentSignal && this.body.y >= NINJA_COLLISION_Y ) {
