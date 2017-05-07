@@ -11,7 +11,7 @@ export default class GameUI {
 
     this.stateStatus = 'playing';
 
-    this.score = 0;
+    this.score = 100;
     this.runOnce = false;
     this.gamePaused = false;
 
@@ -93,6 +93,7 @@ export default class GameUI {
   }
 
   showSlowDownText(){
+    this.game.world.bringToTop( this.slowDownText );
     this.game.add.tween( this.slowDownText ).to( { alpha: 1 }, 500, 'Linear', true );
   }
   hideSlowDownText(){
@@ -129,8 +130,8 @@ export default class GameUI {
     this.textScore.setText( SCORE_TEMPLATE( this.score ) );
   }
 
-  handlePointsAddition() {
-    this.score++;
+  handlePointsSubstraction() {
+    this.score = Math.max( this.score - 10, 0 );
     this.textScore.setText( SCORE_TEMPLATE( this.score ) );
   }
 

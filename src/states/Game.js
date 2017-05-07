@@ -32,8 +32,6 @@ export default class Game extends Phaser.State {
 
     this.ShurikenSpawner = new ShurikenSpawner( this.game, this.ninja, this.jumpscareNinja );
 
-    // this.ShurikenSpawner.throwShurken( 'player' );
-
     this.ObstacleSpawner = new ObstacleSpawner( this.game, this.ninja.checkForCollision.bind( this.ninja ) );
     this.ObstacleSpawner.onObstacleSpawn.add( () => this.game.world.bringToTop( this.ninja ) );
     this.ObstacleSpawner.initSpawning();
@@ -49,6 +47,8 @@ export default class Game extends Phaser.State {
 
     if( CURRENT_REVOLUTION_SPEED < TARGET_REVOLUTION_SPEED - REVOLUTION_SPEED_SAFE_ZONE){
       this.jumpscareNinja.showNinja();
+      this.ShurikenSpawner.throwShuriken( 'player' );
+      this.gameUI.handlePointsSubstraction();
     } else if( CURRENT_REVOLUTION_SPEED > TARGET_REVOLUTION_SPEED + REVOLUTION_SPEED_SAFE_ZONE){
       this.fallOff();
     }
@@ -62,7 +62,8 @@ export default class Game extends Phaser.State {
 
     this.game.time.events.pause();
     this.gameUI.showSlowDownText();
-
+    this.gameUI.handlePointsSubstraction();
+    
     this.ninja.fallOff( () => {
       this.gameUI.hideSlowDownText();
       this.ObstacleSpawner.resumeObstacles();
