@@ -9,6 +9,8 @@ export default class ObstacleSpawner {
 
     this.obstacles = this.game.add.group();
 
+    this.onObstacleSpawn = new Phaser.Signal();
+
     this.spawnObstacle();
 
     this.game.time.events.loop( Phaser.Timer.SECOND * 2, this.spawnObstacle, this );
@@ -21,6 +23,7 @@ export default class ObstacleSpawner {
 
     const newObstacle = this.obstacles.add( new Obstacle( this.game, currentOption.x, currentOption.y, currentOption.velocity, currentOption.scale ) );
     newObstacle.onCollisionZoneEnter.add( this.ninjaCheckForCollision );
+    this.onObstacleSpawn.dispatch();
   }
 
   setOnCollisionHandler( callback ) {
