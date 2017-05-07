@@ -15,9 +15,9 @@ export default class Ninja extends Phaser.Sprite{
     this.body.velocity.x = this.getDirection() * VELOCITY;
   }
   getDirection(){
-    if( this.mouse.x + this.game.camera.x < this.position.x ){
+    if( this.mouse.x + this.game.camera.x < this.position.x - NINJA_HIT_AREA_WIDTH / 2 ){
       return LEFT;
-    } else if( this.mouse.x + this.game.camera.x > this.position.x + NINJA_HIT_AREA_WIDTH ){
+    } else if( this.mouse.x + this.game.camera.x > this.position.x + NINJA_HIT_AREA_WIDTH / 2 ){
       return RIGHT;
     } else {
       return CENTER;
