@@ -26,6 +26,7 @@ export default class Ninja extends Phaser.Sprite{
     if( this.body.allowGravity === true && this.position.y > this.originY && this.body.velocity.y >= 0 ){
       this.body.allowGravity = false;
       this.position.y = this.originY;
+      console.log('stop jump');
     }
     if ( this.game.input.activePointer.isDown ){
        this.jump();
@@ -52,6 +53,7 @@ export default class Ninja extends Phaser.Sprite{
     if( this.body.allowGravity === false ){
     this.body.velocity.y = -300;
     this.body.allowGravity = true;
+    console.log('jump');
     }
   }
 }
