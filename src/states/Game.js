@@ -1,4 +1,5 @@
 import GameUI from '../UI/GameUI';
+import Ninja from '../objects/Ninja';
 
 import ObstacleSpawner from "../objects/ObstacleSpawner";
 
@@ -18,8 +19,11 @@ export default class Game extends Phaser.State {
     } );
 
     this.ObstacleSpawner = new ObstacleSpawner();
+    this.initNinja();
   }
-
+  initNinja(){
+    this.ninja = new Ninja( this.game, 500, 500, 'ninja' );
+  }
   update() {
     this.gameUI.updateUI();
   }
