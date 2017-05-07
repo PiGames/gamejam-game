@@ -1,4 +1,5 @@
 import { NINJA_HIT_AREA_WIDTH, LEFT, RIGHT, CENTER, VELOCITY } from '../constants/NinjaConstants';
+import { getRailNumberBasedOnPosition } from '../utils/RoadUtils';
 
 export default class Ninja extends Phaser.Sprite{
   constructor( game, x, y, key ){
@@ -43,11 +44,14 @@ export default class Ninja extends Phaser.Sprite{
     }
   }
   checkForCollision( obstacle ){
-    if( Phaser.Rectangle.intersects( obstacle.getBounds(), this.getBounds() ) && this.body.allowGravity === false ){
+    const obstacleRail = getRailNumberBasedOnPosition( obstacle.x );
+    const ninjaRail = getRailNumberBasedOnPosition( this.x );
+    if( obstacleRail === ninjaRail && this.body.allowGravity === false ){
       this.handleDeath();
     }
   }
   handleDeath(){
+    console.log('umrzyj');
     //this.onDeath.dispatch();
   }
   jump(){

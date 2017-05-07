@@ -4,6 +4,12 @@ export const CENTER_RAIL_SCALE = 0.3;
 export const OBSTACLE_VELOCITY_Y = 300;
 export const OBSTACLE_VELOCITY_X = 120;
 
+export const LEFT_RAIL_POSITION_X = 543;
+export const SIDE_RAIL_WIDTH = 254;
+export const CENTER_RAIL_POSITION_X = LEFT_RAIL_POSITION_X + SIDE_RAIL_WIDTH;
+export const CENTER_RAIL_WIDTH = 330;
+export const RIGHT_RAIL_POSITION_X = CENTER_RAIL_POSITION_X + CENTER_RAIL_WIDTH;
+
 export const RAIL_OPTIONS = ( gameWidth ) => { return [
   {
     x: SIDE_RAIL_CENTER,
