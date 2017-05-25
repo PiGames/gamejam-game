@@ -92,7 +92,8 @@ export default class GameUI {
     this.slowDownText.alpha = 0;
   }
 
-  showSlowDownText(){
+  showSlowDownText( msg ){
+    this.slowDownText.setText( msg );
     this.game.world.bringToTop( this.slowDownText );
     this.game.add.tween( this.slowDownText ).to( { alpha: 1 }, 500, 'Linear', true );
   }

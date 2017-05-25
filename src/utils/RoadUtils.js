@@ -2,7 +2,8 @@ import { LEFT_RAIL_POSITION_X, SIDE_RAIL_WIDTH, RIGHT_RAIL_POSITION_X, CENTER_RA
 import { LEFT, RIGHT, CENTER } from '../constants/NinjaConstants';
 
 export function getRailNumberBasedOnPosition( x ){
-  if( x < RIGHT_RAIL_POSITION_X + SIDE_RAIL_WIDTH && x >= RIGHT_RAIL_POSITION_X ){
+  console.log( LEFT_RAIL_POSITION_X, CENTER_RAIL_POSITION_X, RIGHT_RAIL_POSITION_X, );
+  if( x >= RIGHT_RAIL_POSITION_X ){
     return RIGHT;
   } else if( x < RIGHT_RAIL_POSITION_X && x >= CENTER_RAIL_POSITION_X ){
     return CENTER;

@@ -2,8 +2,10 @@ import { NINJA_HIT_AREA_WIDTH, LEFT, RIGHT, CENTER, VELOCITY, TIME_TO_RECOVER } 
 import { getRailNumberBasedOnPosition } from '../utils/RoadUtils';
 
 export default class Ninja extends Phaser.Sprite{
-  constructor( game, x, y, key ){
+  constructor( game, x, y, key, externalFallOff ){
     super( game, x, y, key, 1 );
+
+    this.externalFallOff = externalFallOff;
 
     this.game.physics.enable( this, Phaser.Physics.ARCADE );
     this.game.world.add( this );
@@ -14,13 +16,15 @@ export default class Ninja extends Phaser.Sprite{
     this.mouse = this.game.input.activePointer;
 
     this.anchor.set( 0.5, 1 );
-    this.scale.set( 0.5 );
+    this.scale.set( 0.33 );
 
     this.onDeath = new Phaser.Signal();
 
     this.originY = this.position.y;
 
     this.isOnBoard = true;
+
+    this.animations.add( 'falling-off', [ 3, 4, 5 ] );
   }
   update(){
     if( this.body.allowGravity === true && this.position.y > this.originY && this.body.velocity.y >= 0 ){
@@ -51,8 +55,10 @@ export default class Ninja extends Phaser.Sprite{
     }
   }
   checkForCollision( obstacle ){
+    console.log( obstacle.x, this.x );
     const obstacleRail = getRailNumberBasedOnPosition( obstacle.x );
     const ninjaRail = getRailNumberBasedOnPosition( this.x );
+    console.log(obstacleRail, ninjaRail);
     if( obstacleRail === ninjaRail && this.body.allowGravity === false ){
       this.handleDeath();
     }
@@ -67,7 +73,7 @@ export default class Ninja extends Phaser.Sprite{
     }
   }
   fallOff( onGetBackCallBack ){
-    //show anim
+    this.animations.play( 'falling-off', 6 );
     this.isOnBoard = false;
     window.setTimeout( () => {
       this.getBackOnBoard();

@@ -10,10 +10,11 @@ const resources = {
     [ 'bush', 'img/assets/bush.png' ],
     [ 'jumping-ninja', 'img/assets/jumping-ninja.png' ],
     [ 'katana', 'img/assets/katana.png' ],
+    [ 'shuriken', 'img/assets/shuriken.png' ],
   ],
   'spritesheet': [
     [ 'trees', 'img/assets/trees.png', 766, 1129 ],
-    [ 'ninja', 'img/assets/ninja2.png', 721, 1340 ],
+    [ 'ninja', 'img/assets/ninja.png', 1272, 1340 ],
 		[ 'button-start', 'img/ui/button-start.png', 160, 160 ],
 		[ 'button-continue', 'img/ui/button-start.png', 160, 160 ],
 		[ 'button-mainmenu', 'img/ui/button-mainmenu.png', 160, 160 ],
@@ -27,7 +28,7 @@ const resources = {
   ],
   'audio': [
 		[ 'audio-click', [ 'sfx/click.mp3', 'sfx/click.ogg' ] ],
-		[ 'audio-theme', [ 'sfx/farty-mcsty.m4a', 'sfx/farty-mcsty.mp3', 'sfx/farty-mcsty.ogg' ] ],
+		[ 'audio-theme', [ 'sfx/jbm.mp3' ] ],
   ],
 };
 

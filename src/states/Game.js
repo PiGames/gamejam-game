@@ -26,7 +26,7 @@ export default class Game extends Phaser.State {
       }
     } );
 
-    this.ninja = new Ninja( this.game, 500, NINJA_COLLISION_Y + 400, 'ninja' );
+    this.ninja = new Ninja( this.game, 500, NINJA_COLLISION_Y + 400, 'ninja', this.fallOff.bind( this ) );
 
     this.jumpscareNinja = new JumpscareNinja( this.game );
 
@@ -38,7 +38,7 @@ export default class Game extends Phaser.State {
 
     this.ObstacleSpawner.addPoints.add( this.gameUI.handlePointsAddition.bind( this.gameUI ) );
 
-    this.ninja.onDeath.add( this.gameUI.stateGameover.bind( this.gameUI ) );
+    this.ninja.onDeath.add( () => this.fallOff( 'WATCH OUT!' ) );
 
   }
 
@@ -47,13 +47,20 @@ export default class Game extends Phaser.State {
 
     if( CURRENT_REVOLUTION_SPEED < TARGET_REVOLUTION_SPEED - REVOLUTION_SPEED_SAFE_ZONE){
       this.jumpscareNinja.showNinja();
-      this.ShurikenSpawner.throwShuriken( 'player' );
+      this.ShurikenSpawner.throwShuriken( 'jumpscareNinja' );
+      this.gameUI.showSlowDownText( 'SPEED UP!' );
+      this.game.time.events.add( Phaser.Timer.SECOND * 2, () => {
+        this.gameUI.hideSlowDownText();
+        this.jumpscareNinja.destroy();
+      } );
+
       this.gameUI.handlePointsSubstraction();
+      CURRENT_REVOLUTION_SPEED = TARGET_REVOLUTION_SPEED;
     } else if( CURRENT_REVOLUTION_SPEED > TARGET_REVOLUTION_SPEED + REVOLUTION_SPEED_SAFE_ZONE){
-      this.fallOff();
+      this.fallOff('SLOW DOWN!');
     }
   }
-  fallOff(){
+  fallOff( msg ){
     if( this.ninja.isOnBoard === false ){
       return;
     }
@@ -61,9 +68,9 @@ export default class Game extends Phaser.State {
     this.ObstacleSpawner.pauseObstacles();
 
     this.game.time.events.pause();
-    this.gameUI.showSlowDownText();
+    this.gameUI.showSlowDownText( msg );
     this.gameUI.handlePointsSubstraction();
-    
+
     this.ninja.fallOff( () => {
       this.gameUI.hideSlowDownText();
       this.ObstacleSpawner.resumeObstacles();
