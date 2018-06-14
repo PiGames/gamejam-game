@@ -175,20 +175,10 @@ function serve() {
 }
 
 gulp.task( "deploy-for-testers", () => {
-  const msg = argv.message || argv.m || null;
-  let options = { branch: "master", force: true };
-
-  if ( msg !== null ) {
-    options.message = msg;
-  }
-
-  return gulp.src( "./build/**/*" ).pipe( ghPages( options ) );
-} );
-
-gulp.task( "deploy", () => {
   if ( argv.confirm ) {
     const msg = argv.message || argv.m || null;
-    const options = { force: true };
+    let options = { branch: "master", force: true };
+
     if ( msg !== null ) {
       options.message = msg;
     }
@@ -197,6 +187,16 @@ gulp.task( "deploy", () => {
   } else {
     gutil.log( gutil.colors.red("To deploy to master on main repository confirm it with --confirm argument") );
   }
+} );
+
+gulp.task( "deploy", () => {
+  const msg = argv.message || argv.m || null;
+  const options = { force: true };
+  if ( msg !== null ) {
+    options.message = msg;
+  }
+
+  return gulp.src( "./build/**/*" ).pipe( ghPages( options ) );
 } );
 
 gulp.task('cleanBuild', cleanBuild);
